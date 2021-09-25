@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation 'org.testng:testng:7.4.0'
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    testImplementation 'io.rest-assured:rest-assured:4.4.0'
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+
+
+}
+
+test {
+    useTestNG(){
+        useDefaultListeners = true
+    }
+
+testLogging {
+    events "PASSED", "FAILED", "SKIPPED"
+}
+
+testLogging.showStandardStreams = true
+
+reports.html.setDestination(file("$buildDir/html"))
+}
